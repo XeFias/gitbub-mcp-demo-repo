@@ -46,12 +46,21 @@ static void test_greeting_from_args_defaults_without_argument(void)
                "Hello, World!", greeting_from_args(1, argv));
 }
 
+static void test_greeting_from_args_defaults_on_empty_argument(void)
+{
+    char *argv[] = {"hello", "", NULL};
+
+    expect_str("test_greeting_from_args_defaults_on_empty_argument",
+               "Hello, World!", greeting_from_args(2, argv));
+}
+
 int main(void)
 {
     test_hello_message_returns_greeting();
     test_greeting_from_args_uses_argument();
     test_greeting_from_args_uses_first_argument_only();
     test_greeting_from_args_defaults_without_argument();
+    test_greeting_from_args_defaults_on_empty_argument();
 
     if (failures > 0) {
         fprintf(stderr, "%d test(s) failed\n", failures);
