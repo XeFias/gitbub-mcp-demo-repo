@@ -2,8 +2,8 @@
 
 #include "hello.h"
 
-int main(void)
+int main(int argc, char *argv[])
 {
-    puts(hello_message());
+    puts(greeting_from_args(argc, argv));
     return 0;
 }
